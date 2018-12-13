@@ -15,7 +15,6 @@ import jp.co.netprotections.service.impl.MemberJudgeServiceImpl;
 /**
  * リクエストを処理するControllerクラスです.
  * @author n.miyahara
-
  */
 @RestController
 public class MemberJudgeController {
@@ -27,25 +26,25 @@ public class MemberJudgeController {
 	 */
 	@RequestMapping(value="/main", method = RequestMethod.POST, consumes = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public MemberJudgeResponseDto dog(@RequestBody MemberJudgeRequestDto apple) {
+	public MemberJudgeResponseDto doMethod(@RequestBody MemberJudgeRequestDto box1) {
 
 
-		MemberJudgeResponseDto smile = new MemberJudgeResponseDto();
-		//直接他のクラスのこのメソッド使いますっていうコードは書けない
-			smile.setMemberName("隊員氏名：" + apple.getName());
-			MemberJudgeServiceImpl stomach = new MemberJudgeServiceImpl();
-			boolean x = stomach.judge(apple);
-			smile.setEnlistedPropriety(x);
+		MemberJudgeResponseDto instance = new MemberJudgeResponseDto();
+		//宮原メモ：直接他のクラスのこのメソッド使いますっていうコードは書けない
+			instance.setMemberName("隊員氏名：" + box1.getName());
+			MemberJudgeServiceImpl instance2 = new MemberJudgeServiceImpl();
+			boolean x = instance2.judge1(box1);
+			instance.setEnlistedPropriety(x);
 
-		return smile;
+		return instance;
 	}
 
-	public boolean checkinput(MemberJudgeRequestDto apple) {
-		int X = apple.getEventPlanning();
-		int Y = apple.getCoodination();
-		int Z = apple.getCogitation();
-		int A = apple.getProgrammingAbility();
-		int B = apple.getInfrastructureKnowledge();
+	private boolean checkinput(MemberJudgeRequestDto box1) {
+		int X = box1.getEventPlanning();
+		int Y = box1.getCoodination();
+		int Z = box1.getCogitation();
+		int A = box1.getProgrammingAbility();
+		int B = box1.getInfrastructureKnowledge();
 
 		if((0 <= X && X <= 5)
 		&& (0 <= Y && Y <= 5)
@@ -59,14 +58,4 @@ public class MemberJudgeController {
 	}
 
 }
-
-
-
-//↓でやりたいことはバリデーション、・隊員情報の各属性は全て半角数値(int)であり、0以上5以下の値のみ受け付けるようにしたい
-//setEnlistedProprietyでboolean型の合否のデータをとってきたいが、MemberJudgeRequestDtoの中にenlistedProprietyがないから
-//どから何をとってくればresponse返せるのかわからん
-
-
-
-
 

@@ -20,16 +20,6 @@ public class MemberJudgeRequestDto {
 
 	public int infrastructureKnowledge;
 
-	public int X;
-
-	public int Y;
-
-	public int Z;
-
-	public int A;
-
-	public int B;
-
 
 	public int allSum;
 
@@ -89,45 +79,6 @@ public class MemberJudgeRequestDto {
 
 	public void setAllSum(int allSum) {
 		this.allSum = allSum;
-	}
-
-	public int getX() {
-		return X;
-	}
-
-	public void setX(int X) {
-		this.X = X;
-	}
-
-	public int getY() {
-		return Y;
-	}
-
-	public void setY(int Y) {
-		this.Y = Y;
-	}
-	public int getZ() {
-		return Z;
-	}
-
-	public void setZ(int Z) {
-		this.Z = Z;
-	}
-
-	public int getA() {
-		return A;
-	}
-
-	public void setA(int A) {
-		this.A = A;
-	}
-
-	public int getB() {
-		return B;
-	}
-
-	public void setB(int B) {
-		this.B = B;
 	}
 }
 

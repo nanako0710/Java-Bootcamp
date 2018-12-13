@@ -5,25 +5,28 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import jp.co.netprotections.service.impl.MemberJudgeServiceImpl;
+import jp.co.netprotections.MemberJudgeServiceImpl;
+import jp.co.netprotections.dto.MemberJudgeRequestDto;
 
 @RunWith(JUnit4.class)
 
 public class FunctionalProgrammingApplicationTest {
 
+	@Test
 	public void test000() {
 		MemberJudgeServiceImpl orange = new MemberJudgeServiceImpl();
-		boolean result = orange.judge();
+		boolean result = orange.judge1(MemberJudgeRequestDto box4) {
+					if(set.eventPlanning(1) <= 1 || coodination(1) <= 1) {
+						return false;
+					}
+					if(box4.getEventPlanning()+box3.getCogitation()+box3.getCoodination()+box3.getInfrastructureKnowledge()+box3.getProgrammingAbility() <= 10) {
+						return false;
+					}
+					return true;
+				}
+			}
 
-	}
 
-
-	@Test
-	public void test001() {
-		FunctionalProgrammingApplicationTest main = new FunctionalProgrammingApplicationTest();
-		// 2. 生成したインスタンスから、結果をテストしたいメソッドを実行し、結果を得ます。
-		boolean result = main.isString("Test String");
-
-		// 3. 期待した結果が返ってきていることを確認します.
 		assertThat(result, is(true));
 	}
 
