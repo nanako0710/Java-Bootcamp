@@ -31,7 +31,7 @@ public class MemberJudgeController {
 
 		MemberJudgeResponseDto mjrdInstance = new MemberJudgeResponseDto();
 
-			mjrdInstance.setMemberName("隊員氏名：" + doMethodBox.getName());
+			mjrdInstance.setMemberName("隊員氏名：" + doMethodBox.getMemberName());
 			MemberJudgeServiceImpl mjsiInstance = new MemberJudgeServiceImpl();
 			boolean x = mjsiInstance.judge(doMethodBox);
 			mjrdInstance.setEnlistedPropriety(x);
@@ -51,6 +51,14 @@ public class MemberJudgeController {
 			return false;
 		}
 	}
+
+    private boolean checkinputname(MemberJudgeRequestDto doMethodBox) {
+    	if(doMethodBox.getMemberName() == null) {
+    		return false;
+    	} else {
+    		return true;
+    	}
+    }
 
 }
 

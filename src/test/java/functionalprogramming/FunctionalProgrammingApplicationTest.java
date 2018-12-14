@@ -54,10 +54,12 @@ public class FunctionalProgrammingApplicationTest {
 	    assertThat(testResult, is(false));
 	}
 
+	/**
+	 * requestの引数の合計値 <= 10 の場合、結果がfalseになるかのテストです
+	 */
 	@Test
 	public void test002() {
 
-		 //requestの引数の合計値 <= 10 の場合、結果がfalseになるかのテストです
 		MemberJudgeRequestDto request = new MemberJudgeRequestDto();
 
 		request.setMemberName("nmiyahara");
@@ -73,14 +75,16 @@ public class FunctionalProgrammingApplicationTest {
 	    assertThat(testResult, is(false));
 	}
 
+	/**
+	 * すべて条件がtureになり、最終的な結果もtureになるパターン
+	 */
 	@Test
 	public void test003() {
 
-		 //eventPlanning <= 1 の場合、結果がfalseになるかのテストです
 		MemberJudgeRequestDto request = new MemberJudgeRequestDto();
 
 		request.setMemberName("nmiyahara");
-		request.setEventPlanning(1);
+		request.setEventPlanning(2);
 		request.setCogitation(3);
 		request.setCoodination(3);
 		request.setProgrammingAbility(3);
@@ -89,7 +93,7 @@ public class FunctionalProgrammingApplicationTest {
 
 		MemberJudgeServiceImpl response = new MemberJudgeServiceImpl();
 	    boolean testResult = response.judge(request);
-	    assertThat(testResult, is(false));
+	    assertThat(testResult, is(true));
 	}
 
 

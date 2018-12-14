@@ -25,7 +25,7 @@ public class MemberJudgeRequestDto {
 
 
 
-	public String getName() {
+	public String getMemberName() {
 		return name;
 	}
 
