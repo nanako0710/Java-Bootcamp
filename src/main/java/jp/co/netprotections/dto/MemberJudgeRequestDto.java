@@ -8,21 +8,17 @@ package jp.co.netprotections.dto;
 public class MemberJudgeRequestDto {
 
 
-	public String name;
+	private String name;
 
-	public int eventPlanning;
+	private int eventPlanning;
 
-	public int cogitation;
+	private int cogitation;
 
-	public int coodination;
+	private int coodination;
 
-	public int programmingAbility;
+	private int programmingAbility;
 
-	public int infrastructureKnowledge;
-
-
-	public int allSum;
-
+	private int infrastructureKnowledge;
 
 
 	public String getMemberName() {
@@ -71,14 +67,6 @@ public class MemberJudgeRequestDto {
 
 	public void setInfrastructureKnowledge(int infrastructureKnowledge) {
 		this.infrastructureKnowledge = infrastructureKnowledge;
-	}
-
-	public int getAllSum() {
-		return allSum;
-	}
-
-	public void setAllSum(int allSum) {
-		this.allSum = allSum;
 	}
 }
 

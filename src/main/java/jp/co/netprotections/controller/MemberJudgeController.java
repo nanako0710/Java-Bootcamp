@@ -18,47 +18,51 @@ import jp.co.netprotections.service.impl.MemberJudgeServiceImpl;
  */
 @RestController
 public class MemberJudgeController {
-
-	/**
+																																																																																																																																																												/**
 	 * @param MemberJudgeRequestDto dto
 	 * @return
 	 * @return MemberJudgeResponseDto response
 	 */
 	@RequestMapping(value="/main", method = RequestMethod.POST, consumes = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public MemberJudgeResponseDto doMethod(@RequestBody MemberJudgeRequestDto doMethodBox) {
-
+	public MemberJudgeResponseDto doMethod(@RequestBody MemberJudgeRequestDto doMethodBox){
 
 		MemberJudgeResponseDto mjrdInstance = new MemberJudgeResponseDto();
 
+		MemberJudgeController checkInputNameInstance = new MemberJudgeController();
+
+	if(checkInputNameInstance.checkInputName(doMethodBox)==false){
+
+		mjrdInstance.setMemberName(null);
+		mjrdInstance.setEnlistedPropriety(false);
+		}
+        if(checkInputNameInstance.checkInput(doMethodBox)){
 			mjrdInstance.setMemberName("隊員氏名：" + doMethodBox.getMemberName());
 			MemberJudgeServiceImpl mjsiInstance = new MemberJudgeServiceImpl();
 			boolean x = mjsiInstance.judge(doMethodBox);
 			mjrdInstance.setEnlistedPropriety(x);
-
+		}
 		return mjrdInstance;
-	}
+}
 
-	private boolean checkinput(MemberJudgeRequestDto doMethodBox) {
+    public boolean checkInputName(MemberJudgeRequestDto doMethodBox2) {
+    	if(doMethodBox2.getMemberName() != null) {
+    		return true;
+    	} else {
+    		return false;
+    	}
+    }
 
-		if((0 <= doMethodBox.getEventPlanning() && doMethodBox.getEventPlanning() <= 5)
-		&& (0 <= doMethodBox.getCoodination() && doMethodBox.getCoodination() <= 5)
-		&& (0 <= doMethodBox.getCogitation() && doMethodBox.getCogitation() <= 5)
-		&& (0 <= doMethodBox.getProgrammingAbility() && doMethodBox.getProgrammingAbility() <= 5)
-		&& (0 <= doMethodBox.getInfrastructureKnowledge() && doMethodBox.getInfrastructureKnowledge() <= 5)) {
+	private boolean checkInput(MemberJudgeRequestDto doMethodBox1){
+
+		if((0 <= doMethodBox1.getEventPlanning() && doMethodBox1.getEventPlanning() <= 5)
+		&& (0 <= doMethodBox1.getCoodination() && doMethodBox1.getCoodination() <= 5)
+		&& (0 <= doMethodBox1.getCogitation() && doMethodBox1.getCogitation() <= 5)
+		&& (0 <= doMethodBox1.getProgrammingAbility() && doMethodBox1.getProgrammingAbility() <= 5)
+		&& (0 <= doMethodBox1.getInfrastructureKnowledge() && doMethodBox1.getInfrastructureKnowledge() <= 5)) {
 			return true;
 		}else {
 			return false;
 		}
 	}
-
-    private boolean checkinputname(MemberJudgeRequestDto doMethodBox) {
-    	if(doMethodBox.getMemberName() == null) {
-    		return false;
-    	} else {
-    		return true;
-    	}
-    }
-
 }
-
