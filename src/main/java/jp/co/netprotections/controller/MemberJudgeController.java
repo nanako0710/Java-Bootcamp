@@ -26,31 +26,26 @@ public class MemberJudgeController {
 	 */
 	@RequestMapping(value="/main", method = RequestMethod.POST, consumes = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
-	public MemberJudgeResponseDto doMethod(@RequestBody MemberJudgeRequestDto box1) {
+	public MemberJudgeResponseDto doMethod(@RequestBody MemberJudgeRequestDto doMethodBox) {
 
 
-		MemberJudgeResponseDto instance = new MemberJudgeResponseDto();
-		//宮原メモ：直接他のクラスのこのメソッド使いますっていうコードは書けない
-			instance.setMemberName("隊員氏名：" + box1.getName());
-			MemberJudgeServiceImpl instance2 = new MemberJudgeServiceImpl();
-			boolean x = instance2.judge1(box1);
-			instance.setEnlistedPropriety(x);
+		MemberJudgeResponseDto mjrdInstance = new MemberJudgeResponseDto();
 
-		return instance;
+			mjrdInstance.setMemberName("隊員氏名：" + doMethodBox.getName());
+			MemberJudgeServiceImpl mjsiInstance = new MemberJudgeServiceImpl();
+			boolean x = mjsiInstance.judge(doMethodBox);
+			mjrdInstance.setEnlistedPropriety(x);
+
+		return mjrdInstance;
 	}
 
-	private boolean checkinput(MemberJudgeRequestDto box1) {
-		int X = box1.getEventPlanning();
-		int Y = box1.getCoodination();
-		int Z = box1.getCogitation();
-		int A = box1.getProgrammingAbility();
-		int B = box1.getInfrastructureKnowledge();
+	private boolean checkinput(MemberJudgeRequestDto doMethodBox) {
 
-		if((0 <= X && X <= 5)
-		&& (0 <= Y && Y <= 5)
-		&& (0 <= Z && Z <= 5)
-		&& (0 <= A && A <= 5)
-		&& (0 <= B && B <= 5)) {
+		if((0 <= doMethodBox.getEventPlanning() && doMethodBox.getEventPlanning() <= 5)
+		&& (0 <= doMethodBox.getCoodination() && doMethodBox.getCoodination() <= 5)
+		&& (0 <= doMethodBox.getCogitation() && doMethodBox.getCogitation() <= 5)
+		&& (0 <= doMethodBox.getProgrammingAbility() && doMethodBox.getProgrammingAbility() <= 5)
+		&& (0 <= doMethodBox.getInfrastructureKnowledge() && doMethodBox.getInfrastructureKnowledge() <= 5)) {
 			return true;
 		}else {
 			return false;

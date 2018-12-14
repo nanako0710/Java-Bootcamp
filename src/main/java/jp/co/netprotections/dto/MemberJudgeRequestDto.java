@@ -29,7 +29,7 @@ public class MemberJudgeRequestDto {
 		return name;
 	}
 
-	public void setName(String name) {
+	public void setMemberName(String name) {
 		this.name = name;
 	}
 

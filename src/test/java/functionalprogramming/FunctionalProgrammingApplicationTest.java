@@ -1,33 +1,97 @@
 package functionalprogramming;
 
+import static org.hamcrest.Matchers.*;
+import static org.junit.Assert.*;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import jp.co.netprotections.service.impl.MemberJudgeServiceImpl;
-import jp.co.netprotections.MemberJudgeServiceImpl;
 import jp.co.netprotections.dto.MemberJudgeRequestDto;
+import jp.co.netprotections.service.impl.MemberJudgeServiceImpl;
 
 @RunWith(JUnit4.class)
+@SpringBootTest
+
 
 public class FunctionalProgrammingApplicationTest {
 
 	@Test
 	public void test000() {
-		MemberJudgeServiceImpl orange = new MemberJudgeServiceImpl();
-		boolean result = orange.judge1(MemberJudgeRequestDto box4) {
-					if(set.eventPlanning(1) <= 1 || coodination(1) <= 1) {
-						return false;
-					}
-					if(box4.getEventPlanning()+box3.getCogitation()+box3.getCoodination()+box3.getInfrastructureKnowledge()+box3.getProgrammingAbility() <= 10) {
-						return false;
-					}
-					return true;
-				}
-			}
 
+		 //eventPlanning <= 1 の場合、結果がfalseになるかのテストです
+		MemberJudgeRequestDto request = new MemberJudgeRequestDto();
 
-		assertThat(result, is(true));
+		request.setMemberName("nmiyahara");
+		request.setEventPlanning(1);
+		request.setCogitation(3);
+		request.setCoodination(3);
+		request.setProgrammingAbility(3);
+		request.setInfrastructureKnowledge(3);
+
+	    MemberJudgeServiceImpl response = new MemberJudgeServiceImpl();
+	    boolean testResult = response.judge(request);
+	    assertThat(testResult, is(false));
 	}
 
-}
+	@Test
+	public void test001() {
+
+		 //Coodination <= 1 の場合、結果がfalseになるかのテストです
+		MemberJudgeRequestDto request = new MemberJudgeRequestDto();
+
+		request.setMemberName("nmiyahara");
+		request.setEventPlanning(3);
+		request.setCogitation(3);
+		request.setCoodination(1);
+		request.setProgrammingAbility(2);
+		request.setInfrastructureKnowledge(3);
+
+
+		MemberJudgeServiceImpl response = new MemberJudgeServiceImpl();
+	    boolean testResult = response.judge(request);
+	    assertThat(testResult, is(false));
+	}
+
+	@Test
+	public void test002() {
+
+		 //requestの引数の合計値 <= 10 の場合、結果がfalseになるかのテストです
+		MemberJudgeRequestDto request = new MemberJudgeRequestDto();
+
+		request.setMemberName("nmiyahara");
+		request.setEventPlanning(3);
+		request.setCogitation(3);
+		request.setCoodination(3);
+		request.setProgrammingAbility(0);
+		request.setInfrastructureKnowledge(0);
+
+
+		MemberJudgeServiceImpl response = new MemberJudgeServiceImpl();
+	    boolean testResult = response.judge(request);
+	    assertThat(testResult, is(false));
+	}
+
+	@Test
+	public void test003() {
+
+		 //eventPlanning <= 1 の場合、結果がfalseになるかのテストです
+		MemberJudgeRequestDto request = new MemberJudgeRequestDto();
+
+		request.setMemberName("nmiyahara");
+		request.setEventPlanning(1);
+		request.setCogitation(3);
+		request.setCoodination(3);
+		request.setProgrammingAbility(3);
+		request.setInfrastructureKnowledge(3);
+
+
+		MemberJudgeServiceImpl response = new MemberJudgeServiceImpl();
+	    boolean testResult = response.judge(request);
+	    assertThat(testResult, is(false));
+	}
+
+
+
+	}

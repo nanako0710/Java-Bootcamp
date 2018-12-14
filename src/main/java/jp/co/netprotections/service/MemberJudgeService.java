@@ -12,6 +12,6 @@ import jp.co.netprotections.dto.MemberJudgeRequestDto;
 //やりたいことはMemberJudgeServiceのeventPlanningにMemberJudgeRequestDtoで代入されたeventPlanningの値を使いたい
 
 public interface MemberJudgeService {
-	public boolean judge1(MemberJudgeRequestDto box3);
+	public boolean judge(MemberJudgeRequestDto judgeBox);
 }
 
