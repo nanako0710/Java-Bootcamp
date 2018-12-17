@@ -25,25 +25,22 @@ public class MemberJudgeController {
 	 */
 	@RequestMapping(value="/main", method = RequestMethod.POST, consumes = org.springframework.http.MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
+
 	public MemberJudgeResponseDto doMethod(@RequestBody MemberJudgeRequestDto doMethodBox){
 
 		MemberJudgeResponseDto mjrdInstance = new MemberJudgeResponseDto();
 
-		MemberJudgeController checkInputNameInstance = new MemberJudgeController();
-
-	if(checkInputNameInstance.checkInputName(doMethodBox)==false){
-
-		mjrdInstance.setMemberName(null);
-		mjrdInstance.setEnlistedPropriety(false);
-		}
-        if(checkInputNameInstance.checkInput(doMethodBox)){
+		if(checkInputName(doMethodBox)){
 			mjrdInstance.setMemberName("隊員氏名：" + doMethodBox.getMemberName());
 			MemberJudgeServiceImpl mjsiInstance = new MemberJudgeServiceImpl();
 			boolean x = mjsiInstance.judge(doMethodBox);
 			mjrdInstance.setEnlistedPropriety(x);
+		} else {
+			mjrdInstance.setMemberName(null);
+			mjrdInstance.setEnlistedPropriety(false);
 		}
 		return mjrdInstance;
-}
+	}
 
     public boolean checkInputName(MemberJudgeRequestDto doMethodBox2) {
     	if(doMethodBox2.getMemberName() != null) {
@@ -56,10 +53,10 @@ public class MemberJudgeController {
 	private boolean checkInput(MemberJudgeRequestDto doMethodBox1){
 
 		if((0 <= doMethodBox1.getEventPlanning() && doMethodBox1.getEventPlanning() <= 5)
-		&& (0 <= doMethodBox1.getCoodination() && doMethodBox1.getCoodination() <= 5)
-		&& (0 <= doMethodBox1.getCogitation() && doMethodBox1.getCogitation() <= 5)
-		&& (0 <= doMethodBox1.getProgrammingAbility() && doMethodBox1.getProgrammingAbility() <= 5)
-		&& (0 <= doMethodBox1.getInfrastructureKnowledge() && doMethodBox1.getInfrastructureKnowledge() <= 5)) {
+			&& (0 <= doMethodBox1.getCoodination() && doMethodBox1.getCoodination() <= 5)
+			&& (0 <= doMethodBox1.getCogitation() && doMethodBox1.getCogitation() <= 5)
+			&& (0 <= doMethodBox1.getProgrammingAbility() && doMethodBox1.getProgrammingAbility() <= 5)
+			&& (0 <= doMethodBox1.getInfrastructureKnowledge() && doMethodBox1.getInfrastructureKnowledge() <= 5)) {
 			return true;
 		}else {
 			return false;

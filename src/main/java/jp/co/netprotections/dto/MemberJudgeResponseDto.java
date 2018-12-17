@@ -7,7 +7,6 @@ package jp.co.netprotections.dto;
  */
 public class MemberJudgeResponseDto {
 
-
 	private String memberName;
 
 	private boolean enlistedPropriety;
