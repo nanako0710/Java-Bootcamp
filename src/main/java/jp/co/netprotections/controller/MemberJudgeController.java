@@ -36,27 +36,19 @@ public class MemberJudgeController {
 			boolean x = mjsiInstance.judge(doMethodBox);
 			mjrdInstance.setEnlistedPropriety(x);
 		} else {
-			mjrdInstance.setMemberName(null);
+			mjrdInstance.setMemberName(doMethodBox.getMemberName());
 			mjrdInstance.setEnlistedPropriety(false);
 		}
 		return mjrdInstance;
 	}
 
     public boolean checkInputName(MemberJudgeRequestDto doMethodBox2) {
-    	if(doMethodBox2.getMemberName() != null) {
-    		return true;
-    	} else {
-    		return false;
-    	}
-    }
-
-	private boolean checkInput(MemberJudgeRequestDto doMethodBox1){
-
-		if((0 <= doMethodBox1.getEventPlanning() && doMethodBox1.getEventPlanning() <= 5)
-			&& (0 <= doMethodBox1.getCoodination() && doMethodBox1.getCoodination() <= 5)
-			&& (0 <= doMethodBox1.getCogitation() && doMethodBox1.getCogitation() <= 5)
-			&& (0 <= doMethodBox1.getProgrammingAbility() && doMethodBox1.getProgrammingAbility() <= 5)
-			&& (0 <= doMethodBox1.getInfrastructureKnowledge() && doMethodBox1.getInfrastructureKnowledge() <= 5)) {
+    	if(doMethodBox2.getMemberName() != null
+    	    && (0 <= doMethodBox2.getEventPlanning() && doMethodBox2.getEventPlanning() <= 5)
+			&& (0 <= doMethodBox2.getCoodination() && doMethodBox2.getCoodination() <= 5)
+			&& (0 <= doMethodBox2.getCogitation() && doMethodBox2.getCogitation() <= 5)
+			&& (0 <= doMethodBox2.getProgrammingAbility() && doMethodBox2.getProgrammingAbility() <= 5)
+			&& (0 <= doMethodBox2.getInfrastructureKnowledge() && doMethodBox2.getInfrastructureKnowledge() <= 5)) {
 			return true;
 		}else {
 			return false;
